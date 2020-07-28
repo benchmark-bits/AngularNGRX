@@ -14,8 +14,8 @@ Pre-requisites
 </ul>
 
 Installation
-git clone https://github.com/rohitnehe/Angular-NGRX.git
-cd  Angular-NGRX
+git clone https://github.com/benchmark-bits/AngularNGRX.git
+cd  AngularNGRX
 npm install
 ng serve
 
