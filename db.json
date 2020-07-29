@@ -1,13 +1,10 @@
 {
   "users": [
-
     {
       "email": "rohanprabhune@benchmarkit.solutions",
       "password": "$2a$10$KKdjPv8k1BAAEfB4aT746.oUIIRt8X04uiKjKR6TnWldZ78F9o2VS",
       "id": 1
     }
-   
-    
   ],
   "validationMessage": [
     {
