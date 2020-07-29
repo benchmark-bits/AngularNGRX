@@ -29,7 +29,7 @@ export class AuthEffects {
       switchMap(payload => {
         return this.authService.logIn(payload.email, payload.password)
           .pipe(map((user) => {
-            return new LogInSuccess({ token: user.token, email: payload.email });
+            return new LogInSuccess({ token: user.accessToken, email: payload.email });
           }),
             catchError((error) => {
               return of(new LogInFailure(error));
