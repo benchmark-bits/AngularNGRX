@@ -64,6 +64,9 @@ export class LoginComponent implements OnInit {
       this.user = state.user;
       if (!this.isAuthenticated) {
         this.error.type = 'danger';
+        this.error.isAlert =  true;
+        this.error.message = state.errorMessage;
+        window.scrollTo(0,0);
       }
       if (this.isAuthenticated) {
         this.loginForm.reset();
@@ -88,7 +91,7 @@ export class LoginComponent implements OnInit {
         email: this.loginForm.value.username,
         password: this.loginForm.value.password
       };
-      try {
+      try{
         this.error = {};
         this.store.dispatch(new LogIn(payload));
       } catch (error) { this.error = this.errorHandler.errorCallback(error);}
