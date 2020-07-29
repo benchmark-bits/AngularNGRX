@@ -3,8 +3,6 @@ import { Router } from '@angular/router';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { Observable, of } from 'rxjs';
 import 'rxjs/add/observable/of';
-// import 'rxjs/add/operator/map';
-// import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/catch';
 import { tap, map, switchMap, catchError } from 'rxjs/operators';
 import {
@@ -13,8 +11,7 @@ import {
   SignUp, SignUpSuccess, SignUpFailure
 } from '../actions/auth.actions';
 import { AuthService } from '../../services/auth.service';
-// import { map } from 'rxjs-compat/operator/map';
-import { User } from '../../models/user.model';
+
 @Injectable()
 export class AuthEffects {
 
@@ -25,19 +22,6 @@ export class AuthEffects {
   ) { }
 
   // added effects for login (call to login service if success call login success action  if failure call action login failure)
-  // @Effect()
-  // LogIn: Observable<any> = this.actions
-  // .ofType(AuthActionTypes.LOGIN)
-  // .map((action: LogIn) => action.payload)
-  // .switchMap(payload => {
-  //   return this.authService.logIn(payload.email, payload.password)
-  //     .map((user) => {
-  //       return new LogInSuccess({token: user.accessToken, email: payload.email});
-  //     })
-  //     .catch((error) => {
-  //       return Observable.of(new LogInFailure({ error }));
-  //     });
-  // });
   @Effect()
   LogIn: Observable<any> = this.actions
     .pipe(ofType(AuthActionTypes.LOGIN),
@@ -45,11 +29,9 @@ export class AuthEffects {
       switchMap(payload => {
         return this.authService.logIn(payload.email, payload.password)
           .pipe(map((user) => {
-            console.log(user);
             return new LogInSuccess({ token: user.token, email: payload.email });
           }),
             catchError((error) => {
-              console.log(error);
               return of(new LogInFailure({ error: error }));
             })
           );
@@ -72,19 +54,6 @@ export class AuthEffects {
     ofType(AuthActionTypes.LOGIN_FAILURE),
   );
 
-  // @Effect()
-  // SignUp: Observable<any> = this.actions.pipe(
-  //   ofType(AuthActionTypes.SIGNUP))
-  //   .map((action: SignUp) => action.payload)
-  //   .switchMap(payload => {
-  //     return this.authService.signUp(payload.email, payload.password)
-  //       .map((user) => {
-  //         return new SignUpSuccess({ token: user.accessToken, email: payload.email });
-  //       })
-  //       .catch((error) => {
-  //         return Observable.of(new SignUpFailure({ error }));
-  //       });
-  //   });
 
 @Effect()
   SignUp: Observable<any> = this.actions.pipe(

@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 import {_throw} from 'rxjs/observable/throw';
+import { catchError } from 'rxjs/operators';
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
@@ -33,13 +34,16 @@ export class ErrorInterceptor implements HttpInterceptor {
   constructor(private router: Router) {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    return next.handle(request)
-      .catch((response: any) => {
+    return next.handle(request).pipe(
+      catchError((response: any) => {
         if (response instanceof HttpErrorResponse && response.status === 401) {
           localStorage.removeItem('accessToken');
           this.router.navigateByUrl('/login');
         }
         return _throw(response);
-      });
+      })
+
+    );
+    
   }
 }
