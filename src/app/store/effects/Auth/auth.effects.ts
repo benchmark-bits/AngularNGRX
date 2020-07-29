@@ -57,7 +57,6 @@ export class AuthEffects {
 
 @Effect()
   SignUp: Observable<any> = this.actions.pipe(
-    
     ofType(AuthActionTypes.SIGNUP),
     map((action: SignUp) => action.payload),
     switchMap(payload => {
