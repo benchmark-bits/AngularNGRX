@@ -13,7 +13,7 @@ export class AuthService {
     return localStorage.getItem('accessToken');
   }
 
-  logIn(email: string, password: string): Observable<any> {
+  logIn(email: string, password: string): Observable<User> {
     const url = environment.serviceUrl + 'login';
     return this.http.post<User>(url, { email, password });
   }
