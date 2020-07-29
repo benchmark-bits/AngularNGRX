@@ -4,41 +4,6 @@
       "email": "rohanprabhune@benchmarkit.solutions",
       "password": "$2a$10$KKdjPv8k1BAAEfB4aT746.oUIIRt8X04uiKjKR6TnWldZ78F9o2VS",
       "id": 1
-    },
-    {
-      "email": "rohanprabhune101@benchmarkit.solutions",
-      "password": "$2a$10$IBgk8p2522jLR9VUsEgES.yfVm40m2fqPnPweeIWej9Cr5GEKJD7i",
-      "id": 2
-    },
-    {
-      "email": "rohanprabhune102@benchmarkit.solutions",
-      "password": "$2a$10$50JM99KTx4tL2bMO3l5LSutb3G7q9G90Gk05gv8g8EgdZIWhHAyZe",
-      "id": 3
-    },
-    {
-      "email": "rohanprabhune1@benchmarkit.solutions",
-      "password": "$2a$10$EjIslQrBOhRpnSitJ52zY.S9.4J0X.hL4151CxoP/yvAuv/c6Ps5e",
-      "id": 4
-    },
-    {
-      "email": "rohanprabhune10@benchmarkit.solutions",
-      "password": "$2a$10$E6Mq3EIYPb0CE29HPam4QO8VlhL3lMX1C8IR.liXitsTX4swkjlZe",
-      "id": 5
-    },
-    {
-      "email": "rohanprabhune100@benchmarkit.solutions",
-      "password": "$2a$10$MtgIwo82pjUUNA7fM3kaaOzyK4.DMtaHH3iH6O7hoc0.0PS/0cpom",
-      "id": 6
-    },
-    {
-      "email": "rohanprabhune1000@benchmarkit.solutions",
-      "password": "$2a$10$th3Ws/raXhlqVp6g8YynS.hNYkH3o0darQ2r6tnciKeTZYw5Dvl.K",
-      "id": 7
-    },
-    {
-      "email": "rohanprabhune200@benchmarkit.solutions",
-      "password": "$2a$10$XsGuIHwuNIqtF/QjyadoAuRxM5JnzN/3V/RrIWoti6V0nqbzl1PvG",
-      "id": 8
     }
   ],
   "validationMessage": [

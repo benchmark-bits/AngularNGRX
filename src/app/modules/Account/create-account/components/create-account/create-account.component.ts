@@ -1,10 +1,10 @@
-import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
-import { FormGroup, FormBuilder, Validators} from '@angular/forms';
-import { Router} from '@angular/router';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, OnDestroy } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { SignUp} from '../../../../../store/actions/Auth/auth.actions';
+import { SignUp } from '../../../../../store/actions/Auth/auth.actions';
 import { AppState, selectAuthState } from '../../../../../store/app.states';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { ValidationMessageService } from '../../../../../services/validation.message.service';
 import { PageDataService } from '../../../../../services/page.data.service';
 import { ErrorHandler } from '../../../../../helpers/error-handler';
@@ -33,6 +33,10 @@ export class CreateAccountComponent implements OnInit {
   user = null;
   getState: Observable<any>;
   isAuthenticated: false;
+  validationMessageSubscription: Subscription;
+  storeSubscription: Subscription;
+  serviceTermsSubscription: Subscription;
+  privacyPolicySubscription: Subscription;
 
   constructor(
     private fb: FormBuilder,
@@ -79,11 +83,11 @@ export class CreateAccountComponent implements OnInit {
 
   // get validation messages
   getValidationMessage() {
-    this.validationMessageService.signupValidationMessage().subscribe(response => {
+    this.validationMessageSubscription = this.validationMessageService.signupValidationMessage().subscribe(response => {
       this.validationMessage = response[0].messages;
     }, (error) => {
       this.error = this.errorHandler.errorCallback(error);
-     });
+    });
   }
 
   // create account form submit
@@ -105,7 +109,7 @@ export class CreateAccountComponent implements OnInit {
 
   // get store state
   getStoreState() {
-    this.getState.subscribe((state) => {
+    this.storeSubscription = this.getState.subscribe((state) => {
       this.isAuthenticated = state.isAuthenticated;
       this.user = state.user;
       this.error.message = state.errorMessage;
@@ -132,7 +136,7 @@ export class CreateAccountComponent implements OnInit {
   // on click open & close function for terms of services modal window
   openTermsOfServicesModal() {
     this.termsOfServicesModal = false;
-    this.pageDataService.getServiceTerms().subscribe(response => {
+    this.serviceTermsSubscription = this.pageDataService.getServiceTerms().subscribe(response => {
       this.termsOfServicesTitle = response[0].title;
       this.termsOfServices = response[0].content;
       this.termsOfServicesModal = true;
@@ -148,7 +152,7 @@ export class CreateAccountComponent implements OnInit {
   // on click open & close function for privacy policy modal window
   openPrivacyPolicyModal() {
     this.privacyPolicyModal = false;
-    this.pageDataService.getPrivacyPolicy().subscribe(response => {
+    this.privacyPolicySubscription = this.pageDataService.getPrivacyPolicy().subscribe(response => {
       this.privacyPolicyTitle = response[0].title;
       this.privacyPolicy = response[0].content;
       this.privacyPolicyModal = true;
@@ -159,6 +163,18 @@ export class CreateAccountComponent implements OnInit {
   closePrivacyPolicyModal() {
     this.privacyPolicyModal = false;
     this.cd.detectChanges();
+  }
+
+  // unsubscribe observables
+  ngOnDestroy(): void {
+    this.validationMessageSubscription.unsubscribe();
+    if (this.serviceTermsSubscription) {
+      this.serviceTermsSubscription.unsubscribe();
+    }
+    if (this.privacyPolicySubscription) {
+      this.privacyPolicySubscription.unsubscribe();
+    }
+    this.storeSubscription.unsubscribe();
   }
 
 }
