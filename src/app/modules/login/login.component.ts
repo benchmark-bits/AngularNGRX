@@ -91,7 +91,7 @@ export class LoginComponent implements OnInit {
       try {
         this.error = {};
         this.store.dispatch(new LogIn(payload));
-      } catch (error) { this.error = this.errorHandler.errorCallback(error); console.log(this.error)}
+      } catch (error) { this.error = this.errorHandler.errorCallback(error);}
     }
     else {
       this.markControlsAsTouched(this.loginForm);
