@@ -11,8 +11,8 @@ import {
   AuthActionTypes,
   LogIn, LogInSuccess, LogInFailure,
   SignUp, SignUpSuccess, SignUpFailure
-} from '../actions/auth.actions';
-import { AuthService } from '../../services/auth.service';
+} from '../../actions/Account/auth.actions';
+import { AuthService } from '../../../services/auth.service';
 
 @Injectable()
 export class AuthEffects {

@@ -1,13 +1,13 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { FormGroup, FormBuilder, Validators} from '@angular/forms';
 import { Router} from '@angular/router';
 import { Store } from '@ngrx/store';
-import { SignUp} from '../../../../store/actions/auth.actions';
-import { AppState, selectAuthState } from '../../../../store/app.states';
+import { SignUp} from '../../../../../store/actions/Account/auth.actions';
+import { AppState, selectAuthState } from '../../../../../store/app.states';
 import { Observable } from 'rxjs';
-import { ValidationMessageService } from '../../../../services/validation.message.service';
-import { PageDataService } from '../../../../services/page.data.service';
-import { ErrorHandler } from '../../../../helpers/error-handler';
+import { ValidationMessageService } from '../../../../../services/validation.message.service';
+import { PageDataService } from '../../../../../services/page.data.service';
+import { ErrorHandler } from '../../../../../helpers/error-handler';
 
 @Component({
   selector: 'app-create-account',
@@ -41,6 +41,7 @@ export class CreateAccountComponent implements OnInit {
     private store: Store<AppState>,
     private errorHandler: ErrorHandler,
     private router: Router,
+    private cd: ChangeDetectorRef
   ) {
     this.getState = this.store.select(selectAuthState);
   }
@@ -130,28 +131,34 @@ export class CreateAccountComponent implements OnInit {
 
   // on click open & close function for terms of services modal window
   openTermsOfServicesModal() {
+    this.termsOfServicesModal = false;
     this.pageDataService.getServiceTerms().subscribe(response => {
       this.termsOfServicesTitle = response[0].title;
       this.termsOfServices = response[0].content;
       this.termsOfServicesModal = true;
+      this.cd.detectChanges();
     }, (error) => { this.error = this.errorHandler.errorCallback(error); });
   }
 
   closeTermsOfServicesModal() {
     this.termsOfServicesModal = false;
+    this.cd.detectChanges();
   }
 
   // on click open & close function for privacy policy modal window
   openPrivacyPolicyModal() {
+    this.privacyPolicyModal = false;
     this.pageDataService.getPrivacyPolicy().subscribe(response => {
       this.privacyPolicyTitle = response[0].title;
       this.privacyPolicy = response[0].content;
       this.privacyPolicyModal = true;
+      this.cd.detectChanges();
     }, (error) => { this.error = this.errorHandler.errorCallback(error); });
   }
 
   closePrivacyPolicyModal() {
     this.privacyPolicyModal = false;
+    this.cd.detectChanges();
   }
 
 }

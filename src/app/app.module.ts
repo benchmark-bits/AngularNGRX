@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
 import { reducers } from './store/app.states';
-import { AuthEffects } from './store/effects/auth.effects';
+import { AuthEffects } from './store/effects/Account/auth.effects';
 import { AuthService } from '../app/services/auth.service';
 import { EffectsModule } from '@ngrx/effects';
 import {HelperModule} from './helpers/helper.module';

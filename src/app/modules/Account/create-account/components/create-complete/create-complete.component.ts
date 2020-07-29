@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { LogOut } from '../../../../store/actions/auth.actions';
-import { AppState} from '../../../../store/app.states';
-import { PageDataService } from '../../../../services/page.data.service';
-import { ErrorHandler } from '../../../../helpers/error-handler';
+import { LogOut } from '../../../../../store/actions/Account/auth.actions';
+import { AppState} from '../../../../../store/app.states';
+import { PageDataService } from '../../../../../services/page.data.service';
+import { ErrorHandler } from '../../../../../helpers/error-handler';
 
 @Component({
   selector: 'app-create-complete',
