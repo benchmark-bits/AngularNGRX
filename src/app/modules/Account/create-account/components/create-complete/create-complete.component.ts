@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { LogOut } from '../../../../store/actions/auth.actions';
-import { AppState} from '../../../../store/app.states';
-import { PageDataService } from '../../../../services/page.data.service';
-import { ErrorHandler } from '../../../../helpers/error-handler';
+import { LogOut } from '../../../../../store/actions/Auth/auth.actions';
+import { AppState} from '../../../../../store/app.states';
+import { PageDataService } from '../../../../../services/page.data.service';
+import { ErrorHandler } from '../../../../../helpers/error-handler';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-create-complete',
@@ -15,6 +16,7 @@ export class CreateCompleteComponent implements OnInit {
   title: string;
   message: string;
   error: any = {};
+  pageDataSubscription: Subscription;
 
   constructor(
     private store: Store<AppState>,
@@ -33,10 +35,15 @@ export class CreateCompleteComponent implements OnInit {
 
   // successful account creation message
   accountCreatedMessage(){
-    this.pageDataService.getAccountCreationMessage().subscribe(response => {
+  this.pageDataSubscription = this.pageDataService.getAccountCreationMessage().subscribe(response => {
       this.title = response[0].title;
       this.message = response[0].content;
     }, (error) => { this.error = this.errorHandler.errorCallback(error); });
+  }
+
+  // unsubscribe observables
+  ngOnDestroy(): void {
+   this.pageDataSubscription.unsubscribe();
   }
 
 }

@@ -91,37 +91,10 @@
 </div>
 
 <!-- TERMS-OF-SERVICES-MODAL-WINDOW -->
-<div *ngIf="termsOfServicesModal" class="custom-modal-overlay">
-  <div class="custom-modal">
-    <div class="custom-modal-header">
-      <h3>{{termsOfServicesTitle}}</h3>
-      <a class="close" href="#" (click)="closeTermsOfServicesModal()">×</a>
-    </div>
-    <div class="custom-modal-content" [innerHtml]="termsOfServices">
-    </div>
-    <div class="custom-modal-footer">
-      <button type="button" class="btn btn-outline btn-outline-secondary"
-        (click)="closeTermsOfServicesModal()">Close</button>
-    </div>
-  </div>
-</div>
+<app-modal [showModal]="termsOfServicesModal" [modalTitle]="termsOfServicesTitle" [modalContent]="termsOfServices"></app-modal>
 <!-- TERMS-OF-SERVICES-MODAL-WINDOW END -->
 
 
 <!-- PRIVACY-POLICY-MODAL-WINDOW -->
-<div *ngIf="privacyPolicyModal" class="custom-modal-overlay">
-  <div class="custom-modal">
-    <div class="custom-modal-header">
-      <h3>{{privacyPolicyTitle}}</h3>
-      <a class="close" href="#" (click)="closePrivacyPolicyModal()">×</a>
-    </div>
-    <div class="custom-modal-content" [innerHtml]="privacyPolicy">
-    </div>
-    <div class="custom-modal-footer">
-      <button type="button" class="btn btn-outline btn-outline-secondary"
-        (click)="closePrivacyPolicyModal()">Close</button>
-    </div>
-  </div>
-</div>
-
+<app-modal [showModal]="privacyPolicyModal" [modalTitle]="privacyPolicyTitle" [modalContent]="privacyPolicy"></app-modal>
 <!-- PRIVACY-POLICY-MODAL-WINDO-END-->

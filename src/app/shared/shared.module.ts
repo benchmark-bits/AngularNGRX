@@ -3,12 +3,14 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PageNotFoundComponent } from '../shared/components/page-not-found/page-not-found.component';
 import { MessageComponent } from './components/message/message.component';
+import { ModalComponent } from './components/modal/message.component';
 
 
 @NgModule({
   declarations: [
     PageNotFoundComponent,
-    MessageComponent
+    MessageComponent,
+    ModalComponent
   ],
   imports: [
     CommonModule,
@@ -19,7 +21,8 @@ import { MessageComponent } from './components/message/message.component';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    MessageComponent
+    MessageComponent,
+    ModalComponent
   ],
   providers: [
   ],
