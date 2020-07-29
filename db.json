@@ -34,6 +34,11 @@
       "email": "rohanprabhune1000@benchmarkit.solutions",
       "password": "$2a$10$th3Ws/raXhlqVp6g8YynS.hNYkH3o0darQ2r6tnciKeTZYw5Dvl.K",
       "id": 7
+    },
+    {
+      "email": "rohanprabhune200@benchmarkit.solutions",
+      "password": "$2a$10$XsGuIHwuNIqtF/QjyadoAuRxM5JnzN/3V/RrIWoti6V0nqbzl1PvG",
+      "id": 8
     }
   ],
   "validationMessage": [

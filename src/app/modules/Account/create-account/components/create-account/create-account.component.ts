@@ -2,7 +2,7 @@ import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@
 import { FormGroup, FormBuilder, Validators} from '@angular/forms';
 import { Router} from '@angular/router';
 import { Store } from '@ngrx/store';
-import { SignUp} from '../../../../../store/actions/Account/auth.actions';
+import { SignUp} from '../../../../../store/actions/Auth/auth.actions';
 import { AppState, selectAuthState } from '../../../../../store/app.states';
 import { Observable } from 'rxjs';
 import { ValidationMessageService } from '../../../../../services/validation.message.service';

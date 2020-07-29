@@ -1,5 +1,5 @@
 import { User } from '../../../models/user.model';
-import { AuthActionTypes, All } from '../../actions/Account/auth.actions';
+import { AuthActionTypes, All } from '../../actions/Auth/auth.actions';
 
 
 export interface State {
