@@ -15,7 +15,7 @@ import { Subscription } from 'rxjs';
   selector: 'app-login',
   templateUrl: './login.component.html'
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
 
   loginForm: FormGroup;
   validationMessage: object;
@@ -95,10 +95,8 @@ export class LoginComponent implements OnInit {
         email: this.loginForm.value.username,
         password: this.loginForm.value.password
       };
-    
-        this.error = {};
-        this.store.dispatch(new LogIn(payload));
-     
+      this.error = {};
+      this.store.dispatch(new LogIn(payload));
     }
     else {
       this.markControlsAsTouched(this.loginForm);

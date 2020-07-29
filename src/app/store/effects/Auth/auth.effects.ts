@@ -32,7 +32,7 @@ export class AuthEffects {
             return new LogInSuccess({ token: user.token, email: payload.email });
           }),
             catchError((error) => {
-              return of(new LogInFailure({ error: error }));
+              return of(new LogInFailure(error));
             })
           );
       }));
@@ -55,7 +55,7 @@ export class AuthEffects {
   );
 
 
-@Effect()
+  @Effect()
   SignUp: Observable<any> = this.actions.pipe(
     ofType(AuthActionTypes.SIGNUP),
     map((action: SignUp) => action.payload),
@@ -63,12 +63,12 @@ export class AuthEffects {
       return this.authService.signUp(payload.email, payload.password)
         .pipe(
           map((user) => {
-          return new SignUpSuccess({ token: user.accessToken, email: payload.email });
-        }),
-        catchError((error) => {
-          return Observable.of(new SignUpFailure({ error }));
-        })
-        )
+            return new SignUpSuccess({ token: user.accessToken, email: payload.email });
+          }),
+          catchError((error) => {
+            return Observable.of(new SignUpFailure({ error }));
+          })
+        );
     })
   );
 

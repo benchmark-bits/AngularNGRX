@@ -5,7 +5,7 @@ import {
 import { Observable } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
-import {_throw} from 'rxjs/observable/throw';
+import { _throw } from 'rxjs/observable/throw';
 import { catchError } from 'rxjs/operators';
 
 @Injectable()
@@ -13,7 +13,7 @@ export class TokenInterceptor implements HttpInterceptor {
 
   private authService: AuthService;
 
-  constructor(private injector: Injector) {}
+  constructor(private injector: Injector) { }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     this.authService = this.injector.get(AuthService);
@@ -31,7 +31,7 @@ export class TokenInterceptor implements HttpInterceptor {
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) { }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(request).pipe(
@@ -42,8 +42,6 @@ export class ErrorInterceptor implements HttpInterceptor {
         }
         return _throw(response);
       })
-
     );
-    
   }
 }

@@ -14,7 +14,7 @@ import { ErrorHandler } from '../../../../../helpers/error-handler';
   templateUrl: './create-account.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CreateAccountComponent implements OnInit {
+export class CreateAccountComponent implements OnInit, OnDestroy {
 
   termsOfServicesModal: boolean;
   privacyPolicyModal: boolean;

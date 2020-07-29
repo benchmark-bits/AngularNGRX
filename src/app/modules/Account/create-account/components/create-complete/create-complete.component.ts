@@ -11,7 +11,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './create-complete.component.html',
   styleUrls: ['./create-complete.component.scss']
 })
-export class CreateCompleteComponent implements OnInit {
+export class CreateCompleteComponent implements OnInit, OnDestroy{
 
   title: string;
   message: string;
