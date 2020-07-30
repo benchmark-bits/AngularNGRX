@@ -1,10 +1,10 @@
-import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {PageNotFoundComponent} from './components/page-not-found/page-not-found.component';
-import {MessageComponent} from './components/message/message.component';
-import {ModalComponent} from './components/modal/message.component';
-import {RouterModule} from '@angular/router';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PageNotFoundComponent } from '../shared/components/page-not-found/page-not-found.component';
+import { MessageComponent } from './components/message/message.component';
+import { ModalComponent } from './components/modal/modal.component';
+
 
 
 @NgModule({
@@ -17,7 +17,6 @@ import {RouterModule} from '@angular/router';
     CommonModule,
     FormsModule,
     ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'}),
-    RouterModule,
   ],
   exports: [
     CommonModule,

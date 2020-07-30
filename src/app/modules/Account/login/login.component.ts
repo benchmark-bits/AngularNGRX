@@ -110,6 +110,6 @@ export class LoginComponent implements OnInit, OnDestroy {
   // unsubscribe observables
   ngOnDestroy(): void {
     this.validationMessageSubscription.unsubscribe();
-    this.getStateSubscription.unsubscribe();
+    this.getStateSubscription.unsubscribe(); 
   }
 }

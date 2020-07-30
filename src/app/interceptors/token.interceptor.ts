@@ -11,8 +11,7 @@ export class TokenInterceptor implements HttpInterceptor {
 
   private authService: AuthService;
 
-  constructor(private injector: Injector) {
-  }
+  constructor(private injector: Injector) { }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     this.authService = this.injector.get(AuthService);
@@ -30,8 +29,7 @@ export class TokenInterceptor implements HttpInterceptor {
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
 
-  constructor(private router: Router) {
-  }
+  constructor(private router: Router) { }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(request).pipe(
