@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-forgot-password',
@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ForgotPasswordComponent implements OnInit {
 
-  sentMesaage = false;
+  sentMessage = false;
   forgotPasswordForm = true;
 
   constructor() { }
@@ -15,7 +15,7 @@ export class ForgotPasswordComponent implements OnInit {
   }
 
   sentEmailMessage() {
-    this.sentMesaage = true;
+    this.sentMessage = true;
     this.forgotPasswordForm = false;
   }
 

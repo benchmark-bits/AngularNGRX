@@ -1,6 +1,3 @@
-<!--server message-->
-<app-message [isAlert]="error?.isAlert" [type]="error?.type" [message]="error?.message"></app-message>
-<!--server message-->
 <div class="form-wrapper">
   <!--ACCOUNT CREATION FORM-->
   <div class="logo">
@@ -91,10 +88,12 @@
 </div>
 
 <!-- TERMS-OF-SERVICES-MODAL-WINDOW -->
-<app-modal [showModal]="termsOfServicesModal" [modalTitle]="termsOfServicesTitle" [modalContent]="termsOfServices"></app-modal>
+<app-modal [modalContent]="termsOfServices" [modalTitle]="termsOfServicesTitle"
+           [showModal]="termsOfServicesModal"></app-modal>
 <!-- TERMS-OF-SERVICES-MODAL-WINDOW END -->
 
 
 <!-- PRIVACY-POLICY-MODAL-WINDOW -->
-<app-modal [showModal]="privacyPolicyModal" [modalTitle]="privacyPolicyTitle" [modalContent]="privacyPolicy"></app-modal>
-<!-- PRIVACY-POLICY-MODAL-WINDO-END-->
+<app-modal [modalContent]="privacyPolicy" [modalTitle]="privacyPolicyTitle"
+           [showModal]="privacyPolicyModal"></app-modal>
+<!-- PRIVACY-POLICY-MODAL-WINDOW-END-->

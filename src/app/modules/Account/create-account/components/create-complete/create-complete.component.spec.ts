@@ -1,25 +1,23 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LoginComponent } from './login.component';
+import { CreateCompleteComponent } from './create-complete.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {MockStore, provideMockStore} from '@ngrx/store/testing';
-import {initialState} from '../../../store/reducers/Auth/auth-reducer';
-import {RouterTestingModule} from '@angular/router/testing';
+import {initialState} from '../../../../../store/reducers/Auth/auth-reducer';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
-import {ErrorHandler} from '../../../helpers/error-handler';
+import {ErrorHandler} from '../../../../../helpers/error-handler';
 
-describe('LoginComponent', () => {
-  let component: LoginComponent;
-  let fixture: ComponentFixture<LoginComponent>;
+describe('CreateCompleteComponent', () => {
+  let component: CreateCompleteComponent;
+  let fixture: ComponentFixture<CreateCompleteComponent>;
   let store: MockStore;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LoginComponent ],
+      declarations: [ CreateCompleteComponent ],
       imports: [
         ReactiveFormsModule,
         HttpClientTestingModule,
-        RouterTestingModule.withRoutes([])
       ],
       providers: [
         ErrorHandler,
@@ -31,7 +29,7 @@ describe('LoginComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LoginComponent);
+    fixture = TestBed.createComponent(CreateCompleteComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

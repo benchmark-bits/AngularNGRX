@@ -1,19 +1,18 @@
-import { Injectable, Injector } from '@angular/core';
-import {
-  HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HttpErrorResponse
-} from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { AuthService } from '../services/auth.service';
-import { Router } from '@angular/router';
-import {_throw} from 'rxjs/observable/throw';
-import { catchError } from 'rxjs/operators';
+import {Injectable, Injector} from '@angular/core';
+import {HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
+import {Observable} from 'rxjs';
+import {AuthService} from '../services/auth.service';
+import {Router} from '@angular/router';
+import {throwError } from 'rxjs';
+import {catchError} from 'rxjs/operators';
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
 
   private authService: AuthService;
 
-  constructor(private injector: Injector) {}
+  constructor(private injector: Injector) {
+  }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     this.authService = this.injector.get(AuthService);
@@ -31,19 +30,18 @@ export class TokenInterceptor implements HttpInterceptor {
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) {
+  }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(request).pipe(
       catchError((response: any) => {
         if (response instanceof HttpErrorResponse && response.status === 401) {
           localStorage.removeItem('accessToken');
-          this.router.navigateByUrl('/login');
+          this.router.navigateByUrl('/login').then();
         }
-        return _throw(response);
+        return throwError(response);
       })
-
     );
-    
   }
 }

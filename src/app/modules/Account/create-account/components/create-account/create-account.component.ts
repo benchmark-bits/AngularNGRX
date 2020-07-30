@@ -1,20 +1,20 @@
-import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, OnDestroy } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { Store } from '@ngrx/store';
-import { SignUp } from '../../../../../store/actions/Auth/auth.actions';
-import { AppState, selectAuthState } from '../../../../../store/app.states';
-import { Observable, Subscription } from 'rxjs';
-import { ValidationMessageService } from '../../../../../services/validation.message.service';
-import { PageDataService } from '../../../../../services/page.data.service';
-import { ErrorHandler } from '../../../../../helpers/error-handler';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {Router} from '@angular/router';
+import {Store} from '@ngrx/store';
+import {SignUp} from '../../../../../store/actions/Auth/auth.actions';
+import {AppState, selectAuthState} from '../../../../../store/app.states';
+import {Observable, Subscription} from 'rxjs';
+import {ValidationMessageService} from '../../../../../services/validation.message.service';
+import {PageDataService} from '../../../../../services/page.data.service';
+import {ErrorHandler} from '../../../../../helpers/error-handler';
 
 @Component({
   selector: 'app-create-account',
   templateUrl: './create-account.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CreateAccountComponent implements OnInit {
+export class CreateAccountComponent implements OnInit, OnDestroy {
 
   termsOfServicesModal: boolean;
   privacyPolicyModal: boolean;
@@ -118,7 +118,7 @@ export class CreateAccountComponent implements OnInit {
       }
       if (this.isAuthenticated) {
         this.registerForm.reset();
-        this.router.navigate(['/create-account/create-complete']);
+        this.router.navigate(['/create-account/create-complete']).then();
       }
     });
   }
@@ -144,11 +144,6 @@ export class CreateAccountComponent implements OnInit {
     }, (error) => { this.error = this.errorHandler.errorCallback(error); });
   }
 
-  closeTermsOfServicesModal() {
-    this.termsOfServicesModal = false;
-    this.cd.detectChanges();
-  }
-
   // on click open & close function for privacy policy modal window
   openPrivacyPolicyModal() {
     this.privacyPolicyModal = false;
@@ -158,11 +153,6 @@ export class CreateAccountComponent implements OnInit {
       this.privacyPolicyModal = true;
       this.cd.detectChanges();
     }, (error) => { this.error = this.errorHandler.errorCallback(error); });
-  }
-
-  closePrivacyPolicyModal() {
-    this.privacyPolicyModal = false;
-    this.cd.detectChanges();
   }
 
   // unsubscribe observables

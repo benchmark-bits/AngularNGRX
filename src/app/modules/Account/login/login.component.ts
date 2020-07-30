@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import {Component, OnInit, OnDestroy, ChangeDetectionStrategy} from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { AppState, selectAuthState } from '../../../store/app.states';
@@ -15,7 +15,7 @@ import { Subscription } from 'rxjs';
   selector: 'app-login',
   templateUrl: './login.component.html'
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
 
   loginForm: FormGroup;
   validationMessage: object;
@@ -27,6 +27,7 @@ export class LoginComponent implements OnInit {
   user: any;
   validationMessageSubscription: Subscription;
   getStateSubscription: Subscription;
+  isSubmitting: boolean;
 
   constructor(
     private fb: FormBuilder,
@@ -64,6 +65,7 @@ export class LoginComponent implements OnInit {
 
   getStoreState() {
     this.getStateSubscription = this.getState.subscribe((state) => {
+      this.isSubmitting = false;
       this.isAuthenticated = state.isAuthenticated;
       this.user = state.user;
       if (!this.isAuthenticated) {
@@ -95,10 +97,10 @@ export class LoginComponent implements OnInit {
         email: this.loginForm.value.username,
         password: this.loginForm.value.password
       };
-    
-        this.error = {};
-        this.store.dispatch(new LogIn(payload));
-     
+
+      this.error = {};
+      this.isSubmitting = true;
+      this.store.dispatch(new LogIn(payload));
     }
     else {
       this.markControlsAsTouched(this.loginForm);

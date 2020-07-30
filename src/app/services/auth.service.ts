@@ -1,8 +1,8 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { User } from '../models/user.model';
-import { environment } from '../../environments/environment';
+import {HttpClient} from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs/Observable';
+import {User} from '../models/user.model';
+import {environment} from '../../environments/environment';
 
 @Injectable()
 export class AuthService {
@@ -15,16 +15,16 @@ export class AuthService {
 
   logIn(email: string, password: string): Observable<User> {
     const url = environment.serviceUrl + 'login';
-    return this.http.post<User>(url, { email, password });
+    return this.http.post<User>(url, {email, password});
   }
 
   signUp(email: string, password: string): Observable<User> {
     const url = environment.serviceUrl + 'register';
-    return this.http.post<User>(url, { email, password });
+    return this.http.post<User>(url, {email, password});
   }
 
-  getStatus(): Observable<User> {
-    const url = environment.serviceUrl + 'status';
-    return this.http.get<User>(url);
-  }
+  // getStatus(): Observable<User> {
+  //   const url = environment.serviceUrl + 'status';
+  //   return this.http.get<User>(url);
+  // }
 }

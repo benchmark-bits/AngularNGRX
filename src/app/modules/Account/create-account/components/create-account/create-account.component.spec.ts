@@ -1,21 +1,21 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LoginComponent } from './login.component';
+import { CreateAccountComponent } from './create-account.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {MockStore, provideMockStore} from '@ngrx/store/testing';
-import {initialState} from '../../../store/reducers/Auth/auth-reducer';
-import {RouterTestingModule} from '@angular/router/testing';
+import {initialState} from '../../../../../store/reducers/Auth/auth-reducer';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
-import {ErrorHandler} from '../../../helpers/error-handler';
+import {RouterTestingModule} from '@angular/router/testing';
+import {ErrorHandler} from '../../../../../helpers/error-handler';
 
-describe('LoginComponent', () => {
-  let component: LoginComponent;
-  let fixture: ComponentFixture<LoginComponent>;
+describe('CreateAccountComponent', () => {
+  let component: CreateAccountComponent;
+  let fixture: ComponentFixture<CreateAccountComponent>;
   let store: MockStore;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LoginComponent ],
+      declarations: [ CreateAccountComponent ],
       imports: [
         ReactiveFormsModule,
         HttpClientTestingModule,
@@ -31,7 +31,7 @@ describe('LoginComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LoginComponent);
+    fixture = TestBed.createComponent(CreateAccountComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

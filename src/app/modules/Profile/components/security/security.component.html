@@ -16,7 +16,7 @@
     </li>
     <li class="profile-steps-item active">
       Security
-     </li>
+    </li>
   </ul>
   <!--STEPS END-->
   <div class="w-100 float-left mb-5">
@@ -27,7 +27,7 @@
             <div class="col-md-6">
               <div class="form-group">
                 <span class="plain-select">
-                    <select class="form-control" id="select1">
+                    <select class="form-control">
                         <option value="" selected>Select Security Question</option>
                         <option>Question 1</option>
                         <option>Question 2</option>
@@ -35,16 +35,16 @@
                         <option>Question 4</option>
                     </select>
                 </span>
-            </div>
+              </div>
               <div class="form-group has-float-label">
-                <input class="form-control" type="text" id="answerfirst" placeholder="Type Answer">
-                <label for="answerfirst">Type Answer</label>
+                <input class="form-control" id="answerFirst" placeholder="Type Answer" type="text">
+                <label for="answerFirst">Type Answer</label>
               </div>
             </div>
             <div class="col-md-6">
               <div class="form-group">
                 <span class="plain-select">
-                    <select class="form-control" id="select1">
+                    <select class="form-control">
                         <option value="" selected>Select Security Question</option>
                         <option>Question 1</option>
                         <option>Question 2</option>
@@ -52,10 +52,10 @@
                         <option>Question 4</option>
                     </select>
                 </span>
-            </div>
+              </div>
               <div class="form-group has-float-label">
-                <input class="form-control" type="text" id="answersecond" placeholder="Type Answer">
-                <label for="answersecond">Type Answer</label>
+                <input class="form-control" id="answerSecond" placeholder="Type Answer" type="text">
+                <label for="answerSecond">Type Answer</label>
               </div>
             </div>
           </div>
@@ -63,7 +63,9 @@
       </div>
 
       <div class="d-flex justify-content-center mt-x-0 pt-x-0 mt-5 pt-5">
-        <button class="btn btn-lg btn-primary w-100 disabled" [routerLink]="['/setup-profile/profile-setup-complete']">Submit</button>
+        <button [routerLink]="['/setup-profile/profile-setup-complete']" class="btn btn-lg btn-primary w-100 disabled">
+          Submit
+        </button>
       </div>
     </form>
   </div>
